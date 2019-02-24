@@ -111,6 +111,7 @@ L1 = 3
 L2 = 3*np.sqrt(2)
 L3 = L1
 gamma = pi/4
+pi = np.pi
     #Festipunktar tjakkanna
 x0 = 0
 y0 = 0
@@ -138,8 +139,8 @@ def xogy(theta):
 	N1 = B3*(p2**2-p1**2-A2**2-B2**2)-B2*(p3**2-p1**2-A3**2-B3**2)
 	N2 = -A3*(p2**2-p1**2-A2**2-B2**2)+A2*(p3**2-p1**2-A3**2-B3**2)
 
-    x_0 = N1/D
-    y_0 = N2/D
+    x_0 = N1 / D
+    y_0 = N2 / D
 
     x_1 = x_0 + L1*np.cos(theta+gamma)
     y_1 = y_0 + L1*np.sin(theta+gamma)
@@ -147,7 +148,7 @@ def xogy(theta):
     x_2 = x_0 + L1*np.cos(theta)
     y_2 = y_0 + L1*np.sin(theta)
 
-        return x_0, x_1, x_2, y_0, y_1, y_2
+    return x_0, x_1, x_2, y_0, y_1, y_2
 
 
 import teiknamynd

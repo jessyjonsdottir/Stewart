@@ -47,9 +47,9 @@ class Toluleg(object):
         N2 = -A3*(p2**2-p1**2-A2**2-B2**2)+A2*(p3**2-p1**2-A3**2-B3**2)
         return N1**2 + N2**2 -p1**2*D**2
 
-    def teikna:
-        x = np.linspace(-math.pi,math.pi,100)
-        # 100 linearly spaced numbers frá -pi til pi
-        y = f(x)
-        plt.plot(x, y)
-        plt.show()
+
+    x = np.linspace(-m.pi,m.pi,100)
+    # 100 linearly spaced numbers frá -pi til pi
+    y = f(x)
+    plt.scatter(x, y)
+    plt.show()

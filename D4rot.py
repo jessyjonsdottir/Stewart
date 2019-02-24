@@ -14,7 +14,7 @@ def bisection(f,x1,x2,switch=1,tol=1.0e-09):
   #Athugum hvort formerki fallgildis á endum bilsins séu jöfn; ef svo er er rótin ekki á bilinu
 	if sign(f1) == sign(f2):
 		return ('Rótin er ekki á bilinu')
-  
+
 	n = int(m.ceil(m.log(abs(x2-x1)/tol)/m.log(2.0)))
 	for i in range(n):
 		x3 = 0.5*(x1+x2); f3 = f(x3)

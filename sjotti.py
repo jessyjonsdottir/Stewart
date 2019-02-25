@@ -41,8 +41,9 @@ def f(theta):
     return N1**2 + N2**2 -p1**2*D**2
 
 def teiknagrafbil(titill, xnedra, xefra, ynedra, yefra):
-    xvals = np.arange(-np.pi, np.pi, 0.01) # Grid of 0.01 spacing from pi to pi
-    yvals = f(xvals) # Evaluate function on xvals
+    # bil og grid stærð
+    xvals = np.arange(-np.pi, np.pi, 0.01)
+    yvals = f(xvals)
     plt.plot(xvals, yvals) #Create line plot with yvals against xvals
 
     plt.xlim(xnedra, xefra) #Takmörk ásanna
@@ -57,6 +58,3 @@ def teiknagrafbil(titill, xnedra, xefra, ynedra, yefra):
 plt.figure("Graf 6.1: Stækkun")
 teiknagrafbil("Graf 6.1: Stækkun", -1, 2.7,-5,5 )
 plt.show()
-
-import math as m
-from numpy import sign

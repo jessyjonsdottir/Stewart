@@ -55,6 +55,6 @@ def teiknagrafbil(titill, xnedra, xefra, ynedra, yefra):
     plt.xlabel('Theta')
     plt.ylabel('Fallgildi')
 
-plt.figure("Graf 6.1: Stækkun")
-teiknagrafbil("Graf 6.1: Stækkun", -1, 2.7,-5,5 )
+plt.figure("Graf 6.1, p2=1")
+teiknagrafbil("Graf 6.1, p2=1", -pi, pi, -10000, 100000)
 plt.show()

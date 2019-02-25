@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+debug = True
+
 #Breytum föstunum til að þeir samræmist 4. lið
     #Hliðarlengdir Stewart-pallsins
 L1 = 3
@@ -30,7 +32,7 @@ y_1 = 5
 x_2 = 5
 y_2 = 5
 
-def teiknamynd( x_0, x_1, x_2, y_0, y_1, y_2, xb_0, xb_1, xb_2, yb_0, yb_1, yb_2):
+def teiknatri( x_0, x_1, x_2, y_0, y_1, y_2, xb_0, xb_1, xb_2, yb_0, yb_1, yb_2):
 	#Þríhyrningurinn
 	plt.plot([x_0,x_1,x_2,x_0], [y_0,y_1,y_2,y_0], color='b')
 	plt.ylim(-2,7)
@@ -80,25 +82,52 @@ def teiknarot(theta):
 
 	x_0 = N1 / D
 	y_0 = N2 / D
-	print(x_0)
-	print(y_0)
 
-	x_1 = x_0 + L1*np.cos(theta+gamma)
-	y_1 = y_0 + L1*np.sin(theta+gamma)
+	x_1 = x_0 + L2*np.cos(theta+gamma)
+	y_1 = y_0 + L2*np.sin(theta+gamma)
 
-	x_2 = x_0 + L1*np.cos(theta)
-	y_2 = y_0 + L1*np.sin(theta)
-	teiknamynd( x_0, x_1, x_2, y_0, y_1, y_2 , 0, 0, 5, 0, 6, 0)
+	x_2 = x_0 + L3*np.cos(theta)
+	y_2 = y_0 + L3*np.sin(theta)
 
+	if(debug is True):
+		print("x hnit:")
+		print(x_0)
+		print("y hnit:")
+		print(y_0)
 
+		print("L1")
+		print(np.sqrt((x_1-x_2)**2+(y_1-y_2)**2))
+		print(L1)
 
+		print("L2")
+		print(np.sqrt((x_1-x_0)**2+(y_1-y_0)**2))
+		print(L2)
 
+		print("L3")
+		print(np.sqrt((x_2-x_0)**2+(y_2-y_0)**2))
+		print(L3)
 
-plt.figure("Graf 2")
+	teiknatri( x_0, x_1, x_2, y_0, y_1, y_2 , 0, 0, 5, 0, 6, 0)
+
+def f(theta):
+#Hér þarf að finna þeta fyrst
+    A2 = L3*np.cos(theta) - x1
+    B2 = L3*np.sin(theta)
+    A3 = L2*np.cos(theta+gamma) - x2
+    B3 = L2*np.sin(theta+gamma) - y2
+
+    D = 2*(A2*B3 - B2*A3)
+
+    N1 = B3*(p2**2-p1**2-A2**2-B2**2)-B2*(p3**2-p1**2-A3**2-B3**2)
+    N2 = -A3*(p2**2-p1**2-A2**2-B2**2)+A2*(p3**2-p1**2-A3**2-B3**2)
+    return N1**2 + N2**2 -p1**2*D**2
+
+####HÉR GERIST STÖFFIÐ
+
+plt.figure("Dæmi 4: Graf")
 teiknagraf("Graf 2")
 
-
-plt.figure("Dæmi 4")
+plt.figure("Dæmi 4: Þríhyrningar")
 plt.subplot(221)
 teiknarot(-0.7208)
 
@@ -110,5 +139,4 @@ teiknarot(1.1437)
 
 plt.subplot(224)
 teiknarot(2.1160)
-
-#er ehv heima hallo ?
+plt.show()

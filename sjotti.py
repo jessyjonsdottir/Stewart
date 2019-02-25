@@ -1,4 +1,6 @@
 import math as m
+import matplotlib.pyplot as plt
+import numpy as np
 
 def f(theta):
     pi = m.pi
@@ -18,7 +20,7 @@ def f(theta):
     x2 = 0
     y2 = 6
 
-#Hér þarf að finna þeta fyrst
+    #Hér þarf að finna þeta fyrst
     A2 = L3*m.cos(theta) - x1
     B2 = L3*m.sin(theta)
     A3 = L2*m.cos(theta+gamma) - x2
@@ -34,15 +36,16 @@ def f(theta):
     N2 = -A3*(p2**2-p1**2-A2**2-B2**2)+A2*(p3**2-p1**2-A3**2-B3**2)
     return N1**2 + N2**2 -p1**2*D**2
 
-def teiknagraf(titill):
-    xvals = np.arange(-np.pi, np.pi, 0.01) # Grid of 0.01 spacing from pi to pi
-    yvals = f(xvals) # Evaluate function on xvals
-    plt.plot(xvals, yvals) #Create line plot with yvals against xvals
+    # Segjum stærð á grid og á hvaða bili (-pi til pi)
+    xvals = np.arange(-np.pi, np.pi, 0.01)
+    yvals = f(xvals)
+    #búum til plottið
+    plt.plot(xvals, yvals)
 
     #plt.xlim(0, 100) #Takmörk ásanna
     #plt.ylim(0, 100)
 
-	#merkjum grafið
+	#Merkjum grafið
     plt.grid(True)
     plt.title(titill)
     plt.xlabel('Theta')

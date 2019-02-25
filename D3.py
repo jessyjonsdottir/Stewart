@@ -43,22 +43,20 @@ def teiknatri( x_0, x_1, x_2, y_0, y_1, y_2, xb_0, xb_1, xb_2, yb_0, yb_1, yb_2)
 	plt.scatter(xb_1, yb_1, c='b', s=20)
 	plt.scatter(xb_2, yb_2, c='b', s=20)
 
-	print("x hnit:")
-	print(x_0)
-	print("y hnit:")
-	print(y_0)
+	print("X hnit: ", x_0)
+	print("Y hnit: ", y_0)
 
-	print("L1")
-	print(np.sqrt((x_1-x_2)**2+(y_1-y_2)**2))
-	print(L1)
+	print("L1: ")
+	print("Teiknað: ", np.sqrt((x_1-x_2)**2+(y_1-y_2)**2))
+	print("Skilgreint: ", L1)
 
 	print("L2")
-	print(np.sqrt((x_1-x_0)**2+(y_1-y_0)**2))
-	print(L2)
+	print("Teiknað: ",np.sqrt((x_1-x_0)**2+(y_1-y_0)**2))
+	print("Skilgreint: ",L2)
 
 	print("L3")
-	print(np.sqrt((x_2-x_0)**2+(y_2-y_0)**2))
-	print(L3)
+	print("Teiknað: ",np.sqrt((x_2-x_0)**2+(y_2-y_0)**2))
+	print("Skilgreint: ",L3)
 
 """
 plt.figure("þríhyrningar 1")

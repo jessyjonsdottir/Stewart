@@ -105,7 +105,7 @@ plt.scatter(0, 4, c='b', s=20)
 
 
 ######################################LIÐUR 4
-#Fært í skjalið 4Lidur
+#Fært í skjalið 4.lidur
 ######################################LIÐUR 5
 #Breytum armlengd p2
 p2 = 7

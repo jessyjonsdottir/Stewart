@@ -1,18 +1,15 @@
-import math
+import math as m
 import matplotlib.pyplot as plt
 import numpy as np
 
 tol =0.001
 
-pi = np.pi
-#Hliðarlengdir Stewart-pallsins
-
 
 def f(theta):
     L1 = 3
-    L2 = 3*np.sqrt(2)
+    L2 = 3*m.sqrt(2)
     L3 = L1
-    gamma = pi/4
+    gamma = m.pi/4
 
 #Festipunktar tjakkanna
     x0 = 0
@@ -23,10 +20,11 @@ def f(theta):
 
     x2 = 0
     y2 = 6
-    A2 = L3*np.cos(theta) - x1
-    B2 = L3*np.sin(theta)
-    A3 = L2*np.cos(theta+gamma) - x2
-    B3 = L2*np.sin(theta+gamma) - y2
+
+    A2 = L3*m.cos(theta) - x1
+    B2 = L3*m.sin(theta)
+    A3 = L2*m.cos(theta+gamma) - x2
+    B3 = L2*m.sin(theta+gamma) - y2
 
     #p1 er fastur sem 5
     p1 = 5

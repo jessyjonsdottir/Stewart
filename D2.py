@@ -40,9 +40,6 @@ def teiknagraf(titill):
     yvals = f(xvals) # Evaluate function on xvals
     plt.plot(xvals, yvals) #Create line plot with yvals against xvals
 
-    #plt.xlim(0, 100) #Takmörk ásanna
-    #plt.ylim(0, 100)
-
 	#merkjum grafiðs
     plt.grid(True)
     plt.title(titill)

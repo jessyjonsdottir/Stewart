@@ -21,6 +21,22 @@ y1 = 0
 x2 = 0
 y2 = 6
 
+def teiknagraf(titill):
+	xvals = np.arange(-np.pi, np.pi, 0.01) # Grid of 0.01 spacing from pi to pi
+	yvals = f(xvals) # Evaluate function on xvals
+	plt.plot(xvals, yvals) #Create line plot with yvals against xvals
+
+	#plt.xlim(0, 100) #Takmörk ásanna
+	#plt.ylim(0, 100)
+
+	#merkjum grafiðs
+	plt.grid(True)
+	plt.title(titill)
+	plt.xlabel('Theta')
+	plt.ylabel('Fallgildi')
+	#plt.show()
+
+
 def f(theta):
     #Hér þarf að finna þeta fyrst
     A2 = L3*np.cos(theta) - x1
@@ -74,3 +90,8 @@ for i in range(0,100000):
 	counterA = 0
 	p2 += 0.01
 print(answer)
+
+for i in range(0,5):
+	plt.figure("i")
+	p2 = answer[i]
+	teiknagraf()

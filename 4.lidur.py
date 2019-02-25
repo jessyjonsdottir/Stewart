@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import teiknagraf.py
+import Teiknagraf.py*
+import Teiknamynd.py*
 
 #Breytum föstunum til að teikna í 4.lið
     #Hliðarlengdir Stewart-pallsins
@@ -21,6 +22,7 @@ p1 = 5
 p2 = p1
 p3 = 3
 
+#Skilgreinum breytur fyrir x & y hnit þrýhyrningsins fyrir xogy()
 x_0 = 5
 y_0 = 5
 
@@ -32,8 +34,6 @@ y_2 = 5
 
 plt.figure("Graf 2")
 teiknagraf("Graf 2")
-
-import Teiknamynd*
 
 def xogy(theta):
 	#Reiknum A og B
@@ -77,3 +77,5 @@ plt.subplot(223)
 xogy(1.1437)
 plt.subplot(224)
 xogy(2.1160)
+
+#er ehv heima hallo ?

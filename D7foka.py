@@ -1,14 +1,14 @@
-import math as m
+import math
 import matplotlib.pyplot as plt
 import numpy as np
 
 tol =0.001
 
+pi = np.pi
 #Hliðarlengdir Stewart-pallsins
 L1 = 3
 L2 = 3*np.sqrt(2)
 L3 = L1
-pi = np.pi
 gamma = pi/4
 
 #Festipunktar tjakkanna
@@ -55,22 +55,20 @@ def bisection(a,b):
     return c
 
 p2 = 0
-
-space = -m.pi
+space = -math.pi
 answer = []
 counterB = 0
+for i in range(0,10000):
+    counterA = 0
+    for j in range(0,100):
+        values = bisection(space, space+(math.pi)/50)
+        if values != None:
+            counterA += 1
+        space += (math.pi)/50
+    if counterA != counterB:
+        answer.append(p2)
+    counterB = counterA
+    counterA = 0
+    p2 += 0.001
 
-
-for i in range(0,100000):
-	counterA = 0
-	for j in range(0,100):
-		values = bisection(space, space+(m.pi)/50)
-		if values != None:
-			counterA += 1
-		space += (m.pi)/50
-	if counterA != counterB:
-		answer.append(p2)
-	counterB = counterA
-	counterA = 0
-	p2 += 0.01
 print(answer)

@@ -1,7 +1,6 @@
 import math as m
 import matplotlib.pyplot as plt
 import numpy as np
-from numpy import sign
 
 pi = np.pi
 #Hliðarlengdir Stewart-pallsins
@@ -29,8 +28,8 @@ def f(theta):
 
     #p1 er fastur sem 5
     p1 = 5
-    #Breytum p2 frá 1-10 og skoðum
-    p2 = 1
+    #Breytum p2 frá 1 og hækkum okkur þangað til við finnum gildi á p2 með 2 rótum
+    p2 = 8
     #p3 er fastur sem 3
     p3 = 3
 
@@ -40,21 +39,24 @@ def f(theta):
     N2 = -A3*(p2**2-p1**2-A2**2-B2**2)+A2*(p3**2-p1**2-A3**2-B3**2)
     return N1**2 + N2**2 -p1**2*D**2
 
+#Grafið sem teiknar fallið
 def teiknagrafbil(titill, xnedra, xefra, ynedra, yefra):
-    # bil og grid stærð
+    #Bil og grid stærð
     xvals = np.arange(-np.pi, np.pi, 0.01)
     yvals = f(xvals)
-    plt.plot(xvals, yvals) #Create line plot with yvals against xvals
+    #Plotta með x-ás vs y-ás
+    plt.plot(xvals, yvals)
 
-    plt.xlim(xnedra, xefra) #Takmörk ásanna
+    #Ásarnir
+    plt.xlim(xnedra, xefra)
     plt.ylim(ynedra, yefra)
 
-	#merkjum grafið
+	#Merkjum grafið
     plt.grid(True)
     plt.title(titill)
     plt.xlabel('Theta')
     plt.ylabel('Fallgildi')
 
-plt.figure("Graf 6.1, p2=1")
-teiknagrafbil("Graf 6.1, p2=1", -pi, pi, -10000, 100000)
+plt.figure("Graf 6.8.1, p2=8")
+teiknagrafbil("Graf 6.8.1, p2=8", -pi, pi, -10000, 100000)
 plt.show()

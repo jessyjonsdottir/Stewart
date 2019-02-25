@@ -110,7 +110,7 @@ plt.scatter(0, 4, c='b', s=20)
 L1 = 3
 L2 = 3*np.sqrt(2)
 L3 = L1
-gamma = pi/4
+gamma = np.pi/4
 pi = np.pi
     #Festipunktar tjakkanna
 x0 = 0
@@ -124,8 +124,41 @@ p1 = 5
 p2 = p1
 p3 = 3
 
+x_0 = 5
+y_0 = 5
+
+x_1 = 5
+y_1 = 5
+
+x_2 = 5
+y_2 = 5
+
 plt.figure("Graf 2")
 teiknagraf("Graf 2")
+
+def teiknamynd( x_0, x_1, x_2, y_0, y_1, y_2, xb_0, xb_1, xb_2, yb_0, yb_1, yb_2):
+
+#Þríhyrningurinn
+	plt.plot([x_0,x_1,x_2,x_0], [y_0,y_1,y_2,y_0], color='b')
+	plt.ylim(-2,7)
+	plt.xlim(-2,7)
+
+	#Línurnar útfrá þríhyrningnum
+	plt.plot([xb_0,x_0], [yb_0,y_0], color='b')
+	plt.plot([xb_1,x_1], [yb_1,y_1], color='b')
+	plt.plot([xb_2,x_2], [yb_2,y_2], color='b')
+
+	#Plotta punktana í þríhyrningnum
+	plt.scatter(x_0, y_0, c='b', s=20)
+	plt.scatter(x_1, y_1, c='b', s=20)
+	plt.scatter(x_2, y_2, c='b', s=20)
+
+	#Plotta punktana útfrá línunum
+	plt.scatter(xb_0, yb_0, c='b', s=20)
+	plt.scatter(xb_1, yb_1, c='b', s=20)
+	plt.scatter(xb_2, yb_2, c='b', s=20)
+
+
 
 def xogy(theta):
 	#Reiknum A og B
@@ -141,27 +174,34 @@ def xogy(theta):
 
 	x_0 = N1 / D
 	y_0 = N2 / D
+	print(x_0)
+	print(y_0)
 
-	x_1 = x_0 + L1*np.cos(theta+gamma)
-	y_1 = y_0 + L1*np.sin(theta+gamma)
+	if(theta+gamma > (np.pi/2)):
+		x_1 = x_0 - L1*np.sin(theta+gamma-(np.pi/2))
+		y_1 = y_0 + L1*np.sin(theta+gamma)
+	else:
+		x_1 = x_0 + L1*np.cos(theta+gamma)
+		y_1 = y_0 + L1*np.sin(theta+gamma)
 
-	x_2 = x_0 + L1*np.cos(theta)
-	y_2 = y_0 + L1*np.sin(theta)
+	if(gamma > (np.pi/2)):
+		x_2 = x_0 - L1*np.cos(theta-(np.pi/2))
+		y_2 = y_0 + L1*np.sin(theta)
+	else:
+		x_2 = x_0 + L1*np.cos(theta)
+		y_2 = y_0 + L1*np.sin(theta)
+	teiknamynd( x_0, x_1, x_2, y_0, y_1, y_2 , 0, 0, 5, 0, 6, 0)
 
-	return x_0, x_1, x_2, y_0, y_1, y_2
-
-
-import teiknamynd
 
 plt.figure("Dæmi 4")
 plt.subplot(221)
-teiknamynd("Rót 1", xogy(-0.7208), 0, 0, 4, 0, 4, 0)
+xogy(-0.7208)
 plt.subplot(222)
-teiknamynd("Rót 2", xogy(-0.3310), 0, 0, 4, 0, 4, 0)
+xogy(-0.3310)
 plt.subplot(223)
-teiknamynd("Rót 3", xogy(1.1437), 0, 0, 4, 0, 4, 0)
+xogy(1.1437)
 plt.subplot(224)
-teiknamynd("Rót 4", xogy(2.1160), 0, 0, 4, 0, 4, 0)
+xogy(2.1160)
 
 
 

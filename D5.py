@@ -35,8 +35,8 @@ y_2 = 5
 def teiknatri( x_0, x_1, x_2, y_0, y_1, y_2, xb_0, xb_1, xb_2, yb_0, yb_1, yb_2):
 	#Þríhyrningurinn
 	plt.plot([x_0,x_1,x_2,x_0], [y_0,y_1,y_2,y_0], color='b')
-	plt.ylim(-5,10)
-	plt.xlim(-5,10)
+	plt.ylim(-7,10)
+	plt.xlim(-7,10)
 
 	#Línurnar útfrá þríhyrningnum
 	plt.plot([xb_0,x_0], [yb_0,y_0], color='b')
@@ -106,7 +106,7 @@ def teiknarot(theta):
 		print("L3")
 		print(np.sqrt((x_2-x_0)**2+(y_2-y_0)**2))
 		print(L3)
-
+	plt.grid()
 	teiknatri( x_0, x_1, x_2, y_0, y_1, y_2 , 0, 0, 5, 0, 6, 0)
 
 def f(theta):
@@ -127,23 +127,30 @@ def f(theta):
 plt.figure("Dæmi 5: Graf")
 teiknagraf("Graf 2")
 
-plt.figure("Dæmi 5: Þríhyrningar 1" )
+r1 = -0.6731
+r2 = -0.3547
+r3 = 0.03776
+r4 = 0.4588
+r5 = 0.9776
+r6 = 2.5138
+
+plt.figure("Dæmi 5: Þríhyrningar" )
 plt.subplot(321)
-teiknarot(-0.7208)
+teiknarot(r1)
 
 plt.subplot(322)
-teiknarot(-0.3310)
+teiknarot(r2)
 
 plt.subplot(323)
-teiknarot(1.1437)
+teiknarot(r3)
 
 plt.subplot(324)
-teiknarot(2.1160)
+teiknarot(r4)
 
 plt.subplot(325)
-teiknarot(1.1437)
+teiknarot(r5)
 
 plt.subplot(326)
-teiknarot(2.1160)
+teiknarot(r6)
 
 plt.show()

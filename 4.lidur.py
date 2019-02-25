@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import Teiknagraf.py*
+import Teiknamynd.py*
 
 #Breytum föstunum til að teikna í 4.lið
     #Hliðarlengdir Stewart-pallsins
@@ -20,6 +22,7 @@ p1 = 5
 p2 = p1
 p3 = 3
 
+#Skilgreinum breytur fyrir x & y hnit þrýhyrningsins fyrir xogy()
 x_0 = 5
 y_0 = 5
 
@@ -31,30 +34,6 @@ y_2 = 5
 
 plt.figure("Graf 2")
 teiknagraf("Graf 2")
-
-def teiknamynd( x_0, x_1, x_2, y_0, y_1, y_2, xb_0, xb_1, xb_2, yb_0, yb_1, yb_2):
-
-#Þríhyrningurinn
-	plt.plot([x_0,x_1,x_2,x_0], [y_0,y_1,y_2,y_0], color='b')
-	plt.ylim(-2,7)
-	plt.xlim(-2,7)
-
-	#Línurnar útfrá þríhyrningnum
-	plt.plot([xb_0,x_0], [yb_0,y_0], color='b')
-	plt.plot([xb_1,x_1], [yb_1,y_1], color='b')
-	plt.plot([xb_2,x_2], [yb_2,y_2], color='b')
-
-	#Plotta punktana í þríhyrningnum
-	plt.scatter(x_0, y_0, c='b', s=20)
-	plt.scatter(x_1, y_1, c='b', s=20)
-	plt.scatter(x_2, y_2, c='b', s=20)
-
-	#Plotta punktana útfrá línunum
-	plt.scatter(xb_0, yb_0, c='b', s=20)
-	plt.scatter(xb_1, yb_1, c='b', s=20)
-	plt.scatter(xb_2, yb_2, c='b', s=20)
-
-
 
 def xogy(theta):
 	#Reiknum A og B
@@ -98,3 +77,5 @@ plt.subplot(223)
 xogy(1.1437)
 plt.subplot(224)
 xogy(2.1160)
+
+#er ehv heima hallo ?

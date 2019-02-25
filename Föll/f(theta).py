@@ -1,4 +1,5 @@
 import math as m
+#EKKI NOTA ÞETTA FALL
 
 #FYRSTI LIÐUR
 def f(theta):

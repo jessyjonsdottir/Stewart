@@ -1,9 +1,10 @@
 import math as m
+from numpy import sign
 
 #x1 og x2 eru endar bilsins
 #ef switch=1, þá athugar fallið hvort f(x) minnki ekki með hverju skrefi
 
-def bisection(f,x1,x2,switch=1,tol=1.0e-09):
+def rotaleit(f,x1,x2,switch=1,tol=1.0e-09):
   #Athugum strax hvort x1 eða x2 séu rætur
 	f1 = f(x1)
 	if f1 == 0.0:
@@ -11,7 +12,8 @@ def bisection(f,x1,x2,switch=1,tol=1.0e-09):
 	f2 = f(x2)
 	if f2 == 0.0:
 		return x2
-  #Athugum hvort formerki fallgildis á endum bilsins séu jöfn; ef svo er er rótin ekki á bilinu
+  #Athugum hvort formerki fallgildis á endum bilsins séu jöfn; 
+  #ef svo er er rótin ekki á bilinu
 	if sign(f1) == sign(f2):
 		return ('Rótin er ekki á bilinu')
 

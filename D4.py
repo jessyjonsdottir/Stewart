@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-debug = True
+debug = False
 
 #Breytum föstunum til að þeir samræmist 4. lið
     #Hliðarlengdir Stewart-pallsins

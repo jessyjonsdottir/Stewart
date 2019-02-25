@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-debug = True
+debug = False
 
 #Breytum föstunum til að þeir samræmist 4. lið
     #Hliðarlengdir Stewart-pallsins
@@ -35,8 +35,8 @@ y_2 = 5
 def teiknatri( x_0, x_1, x_2, y_0, y_1, y_2, xb_0, xb_1, xb_2, yb_0, yb_1, yb_2):
 	#Þríhyrningurinn
 	plt.plot([x_0,x_1,x_2,x_0], [y_0,y_1,y_2,y_0], color='b')
-	plt.ylim(-2,7)
-	plt.xlim(-2,7)
+	plt.ylim(-5,10)
+	plt.xlim(-5,10)
 
 	#Línurnar útfrá þríhyrningnum
 	plt.plot([xb_0,x_0], [yb_0,y_0], color='b')
@@ -128,24 +128,22 @@ plt.figure("Dæmi 5: Graf")
 teiknagraf("Graf 2")
 
 plt.figure("Dæmi 5: Þríhyrningar 1" )
-plt.subplot(311)
+plt.subplot(321)
 teiknarot(-0.7208)
 
-plt.subplot(312)
+plt.subplot(322)
 teiknarot(-0.3310)
 
-plt.subplot(313)
+plt.subplot(323)
 teiknarot(1.1437)
 
-
-plt.figure("Dæmi 5: Þríhyrningar 2")
-plt.subplot(314)
+plt.subplot(324)
 teiknarot(2.1160)
 
-plt.subplot(313)
+plt.subplot(325)
 teiknarot(1.1437)
 
-plt.subplot(314)
+plt.subplot(326)
 teiknarot(2.1160)
 
 plt.show()

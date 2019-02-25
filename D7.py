@@ -1,15 +1,24 @@
-import math
+import math as m
 import matplotlib.pyplot as plt
 import numpy as np
 
 tol =0.001
 
+<<<<<<< HEAD
 pi = np.pi
 #Hliðarlengdir Stewart-pallsins
 L1 = 3
 L2 = 3*np.sqrt(2)
 L3 = L1
 gamma = pi/4
+=======
+
+def f(theta):
+    L1 = 3
+    L2 = 3*m.sqrt(2)
+    L3 = L1
+    gamma = m.pi/4
+>>>>>>> 4be3147f6f8917c6fe0c718d8014e3cca7942739
 
 #Festipunktar tjakkanna
 x0 = 0
@@ -21,12 +30,22 @@ y1 = 0
 x2 = 0
 y2 = 6
 
+<<<<<<< HEAD
 def f(theta):
     #Hér þarf að finna þeta fyrst
     A2 = L3*np.cos(theta) - x1
     B2 = L3*np.sin(theta)
     A3 = L2*np.cos(theta+gamma) - x2
     B3 = L2*np.sin(theta+gamma) - y2
+=======
+    x2 = 0
+    y2 = 6
+
+    A2 = L3*m.cos(theta) - x1
+    B2 = L3*m.sin(theta)
+    A3 = L2*m.cos(theta+gamma) - x2
+    B3 = L2*m.sin(theta+gamma) - y2
+>>>>>>> 4be3147f6f8917c6fe0c718d8014e3cca7942739
 
     #p1 er fastur sem 5
     p1 = 5

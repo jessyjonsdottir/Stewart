@@ -1,6 +1,8 @@
-import math as m
+import math
 import matplotlib.pyplot as plt
 import numpy as np
+
+tol =0.001
 
 pi = np.pi
 #Hliðarlengdir Stewart-pallsins
@@ -28,8 +30,7 @@ def f(theta):
 
     #p1 er fastur sem 5
     p1 = 5
-    #Breytum p2 frá 1 og hækkum okkur þangað til við finnum gildi á p2 með 2 rótum
-    p2 = 8
+
     #p3 er fastur sem 3
     p3 = 3
 
@@ -39,24 +40,35 @@ def f(theta):
     N2 = -A3*(p2**2-p1**2-A2**2-B2**2)+A2*(p3**2-p1**2-A3**2-B3**2)
     return N1**2 + N2**2 -p1**2*D**2
 
-#Grafið sem teiknar fallið
-def teiknagrafbil(titill, xnedra, xefra, ynedra, yefra):
-    #Bil og grid stærð
-    xvals = np.arange(-np.pi, np.pi, 0.01)
-    yvals = f(xvals)
-    #Plotta með x-ás vs y-ás
-    plt.plot(xvals, yvals)
+def bisection(a,b):
+    if f(a) * f(b) >= 0:
+        return None
+    c = a
+    while (b-a) >= tol:
+        c = (a+b)/2
+        if f(c) == 0:
+            break
+        elif f(c)*f(a) < 0:
+            b=c
+        else:
+            a=c
+    return c
 
-    #Ásarnir
-    plt.xlim(xnedra, xefra)
-    plt.ylim(ynedra, yefra)
+p2 = 0
+space = -math.pi
+answer = []
+counterB = 0
+for i in range(0,10000):
+    counterA = 0
+    for j in range(0,100):
+        values = bisection(space, space+(math.pi)/50)
+        if values != None:
+            counterA += 1
+        space += (math.pi)/50
+    if counterA != counterB:
+        answer.append(p2)
+    counterB = counterA
+    counterA = 0
+    p2 += 0.001
 
-	#Merkjum grafið
-    plt.grid(True)
-    plt.title(titill)
-    plt.xlabel('Theta')
-    plt.ylabel('Fallgildi')
-
-plt.figure("Graf 6.8.1, p2=8")
-teiknagrafbil("Graf 6.8.1, p2=8", -pi, pi, -10000, 100000)
-plt.show()
+print(answer)

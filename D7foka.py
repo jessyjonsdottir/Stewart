@@ -69,7 +69,7 @@ for i in range(0,10000):
         answer.append(p2)
     counterB = counterA
     counterA = 0
-    p2 += 0.001
+    p2 += 0.01
 
 print(answer)
 
@@ -88,8 +88,9 @@ def teiknagraf(titill):
 	plt.ylabel('Fallgildi')
 	#plt.show()
 
-for i in range (0,5):
+for i in range (0,6):
+    plt.figure(i)
     p2 = answer[i]
-    plt.figure("i")
     teiknagraf("i")
-    plt.show()
+
+plt.show()

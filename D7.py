@@ -2,7 +2,7 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 
-tol =0.001
+tol = 0.001
 
 pi = np.pi
 #Hliðarlengdir Stewart-pallsins
@@ -74,7 +74,7 @@ p2 = 0
 space = -math.pi
 answer = []
 counterB = 0
-for i in range(0,10000):
+for i in range(0,1000):
     counterA = 0
     for j in range(0,100):
         values = bisection(space, space+(math.pi)/50)
@@ -85,10 +85,33 @@ for i in range(0,10000):
         answer.append(p2)
     counterB = counterA
     counterA = 0
-    p2 += 0.001
+    p2 += 0.01
 
 print(answer)
 
-r1 = answer[1]
-teiknagraf(r1)
+vigur = []
+for i in range(0,len(answer)):
+	vigur.append(answer[i])
+	vigur.append(answer[i])
+
+x = [0,0,2,2,4,4,5,5,4,4,0,0]
+
+
+plt.plot([0,answer[0]], [0,0], color='r')
+plt.plot([answer[0],answer[0]], [0,2], color='b')
+plt.plot([answer[0],answer[1]], [2,2], color='r')
+plt.plot([answer[1],answer[1]], [2,4], color='b')
+plt.plot([answer[1],answer[2]], [4,4], color='r')
+plt.plot([answer[2],answer[2]], [4,6], color='b')
+plt.plot([answer[2],answer[3]], [6,6], color='r')
+plt.plot([answer[3],answer[3]], [6,4], color='b')
+plt.plot([answer[3],answer[4]], [4,4], color='r')
+plt.plot([answer[4],answer[4]], [4,2], color='b')
+plt.plot([answer[4],answer[5]], [2,2], color='r')
+plt.plot([answer[5],answer[5]], [2,0], color='b')
+plt.plot([answer[5],10], [0,0], color='r')
+
+plt.title("Verkefni 7")
+plt.xlabel('Lengd p2')
+plt.ylabel('Fjöldi núllstöðva')
 plt.show()

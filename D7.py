@@ -1,6 +1,7 @@
-import math
+import math as m
 import matplotlib.pyplot as plt
 import numpy as np
+from numpy import sign
 
 tol = 0.001
 
@@ -40,19 +41,32 @@ def f(theta):
     N2 = -A3*(p2**2-p1**2-A2**2-B2**2)+A2*(p3**2-p1**2-A3**2-B3**2)
     return N1**2 + N2**2 -p1**2*D**2
 
-def bisection(a,b):
-    if f(a) * f(b) >= 0:
-        return None
-    c = a
-    while (b-a) >= tol:
-        c = (a+b)/2
-        if f(c) == 0:
-            break
-        elif f(c)*f(a) < 0:
-            b=c
-        else:
-            a=c
-    return c
+def rotaleit(f,x1,x2, tol=1.0e-09):
+  #Athugum strax hvort x1 eða x2 séu rætur
+	f1 = f(x1)
+	if f1 == 0.0:
+		return x1
+	f2 = f(x2)
+	if f2 == 0.0:
+		return x2
+  #Athugum hvort formerki fallgildis á endum bilsins séu jöfn;
+  #ef svo er er rótin ekki á bilinu
+	if sign(f1) == sign(f2):
+		return None
+
+	n = int(m.ceil(m.log(abs(x2-x1)/tol)/m.log(2.0)))
+	for i in range(n):
+		x3 = 0.5*(x1+x2); f3 = f(x3)
+		if (abs(f3) > abs(f1)) \
+		   and (abs(f3) > abs(f2)):
+			return None
+		if f3 == 0.0:
+			return x3
+		if sign(f2) != sign(f3):
+			x1 = x3; f1 = f3
+		else: x2 = x3; f2 = f3
+	return (x1 + x2)/2.0
+
 
 def teiknagraf(titill):
 	xvals = np.arange(-np.pi, np.pi, 0.01) # Grid of 0.01 spacing from pi to pi
@@ -71,45 +85,39 @@ def teiknagraf(titill):
 
 
 p2 = 0
-space = -math.pi
-answer = []
-counterB = 0
+bil = -m.pi
+svor = []
+teljari2 = 0
+
 for i in range(0,1000):
-    counterA = 0
-    for j in range(0,100):
-        values = bisection(space, space+(math.pi)/50)
-        if values != None:
-            counterA += 1
-        space += (math.pi)/50
-    if counterA != counterB:
-        answer.append(p2)
-    counterB = counterA
-    counterA = 0
-    p2 += 0.01
+	teljari1 = 0
+	for j in range(0,100):
+		values = rotaleit(f,bil, bil+(m.pi)/50)
+		if values != None:
+			teljari1 += 1
+		bil += (m.pi)/50
+	if teljari1 != teljari2:
+		svor.append(p2)
+	teljari2 = teljari1
+	teljari1 = 0
+	p2 += 0.01
 
-print(answer)
+print(svor)
 
-vigur = []
-for i in range(0,len(answer)):
-	vigur.append(answer[i])
-	vigur.append(answer[i])
-
-x = [0,0,2,2,4,4,5,5,4,4,0,0]
-
-
-plt.plot([0,answer[0]], [0,0], color='r')
-plt.plot([answer[0],answer[0]], [0,2], color='b')
-plt.plot([answer[0],answer[1]], [2,2], color='r')
-plt.plot([answer[1],answer[1]], [2,4], color='b')
-plt.plot([answer[1],answer[2]], [4,4], color='r')
-plt.plot([answer[2],answer[2]], [4,6], color='b')
-plt.plot([answer[2],answer[3]], [6,6], color='r')
-plt.plot([answer[3],answer[3]], [6,4], color='b')
-plt.plot([answer[3],answer[4]], [4,4], color='r')
-plt.plot([answer[4],answer[4]], [4,2], color='b')
-plt.plot([answer[4],answer[5]], [2,2], color='r')
-plt.plot([answer[5],answer[5]], [2,0], color='b')
-plt.plot([answer[5],10], [0,0], color='r')
+#teikna
+plt.plot([0,svor[0]], [0,0], color='r')
+plt.plot([svor[0],svor[0]], [0,2], color='b')
+plt.plot([svor[0],svor[1]], [2,2], color='r')
+plt.plot([svor[1],svor[1]], [2,4], color='b')
+plt.plot([svor[1],svor[2]], [4,4], color='r')
+plt.plot([svor[2],svor[2]], [4,6], color='b')
+plt.plot([svor[2],svor[3]], [6,6], color='r')
+plt.plot([svor[3],svor[3]], [6,4], color='b')
+plt.plot([svor[3],svor[4]], [4,4], color='r')
+plt.plot([svor[4],svor[4]], [4,2], color='b')
+plt.plot([svor[4],svor[7]], [2,2], color='r')
+plt.plot([svor[7],svor[7]], [2,0], color='b')
+plt.plot([svor[7],10], [0,0], color='r')
 
 plt.title("Verkefni 7")
 plt.xlabel('Lengd p2')
